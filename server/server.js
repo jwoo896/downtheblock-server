@@ -25,7 +25,7 @@ if (!MONGO_URI) {
 }
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(MONGO_URI);
 mongoose.connection
     .once('open', () => console.log('Connected to MongoLab instance.'))
     .on('error', error => console.log('Error connecting to MongoLab:', error));
@@ -53,9 +53,9 @@ app.use('/graphql', expressGraphQL({
 
 app.use('/sign_s3', sign_s3.sign_s3);
 
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const webpackConfig = require('../webpack.config.js');
-app.use(webpackMiddleware(webpack(webpackConfig)));
+// const webpackMiddleware = require('webpack-dev-middleware');
+// const webpack = require('webpack');
+// const webpackConfig = require('../webpack.config.js');
+// app.use(webpackMiddleware(webpack(webpackConfig)));
 
 module.exports = app;
