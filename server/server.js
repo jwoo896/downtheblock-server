@@ -30,7 +30,7 @@ mongoose.connection
     .once('open', () => console.log('Connected to MongoLab instance.'))
     .on('error', error => console.log('Error connecting to MongoLab:', error));
 
-const whitelist = ['http://downtheblock.herokuapp.com'];
+const whitelist = ['http://downtheblock.herokuapp.com', 'http://localhost:3000'];
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
