@@ -9,10 +9,6 @@ const sign_s3 = require('./controllers/aws');
 
 const app = express();
 
-// set the port of our application
-// process.env.PORT lets the port be set by Heroku
-var port = process.env.PORT || 8080;
-
 //DB setup
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -55,10 +51,6 @@ app.use('/graphql', expressGraphQL({
 }));
 
 app.use('/sign_s3', sign_s3.sign_s3);
-
-app.listen(port, function() {
-    console.log('Our app is running on http://localhost:' + port);
-});
 
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
